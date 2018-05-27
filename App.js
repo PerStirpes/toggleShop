@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Entypo } from '@expo/vector-icons';
 import {
   Text,
   TextInput,
@@ -18,6 +19,7 @@ export default class App extends Component {
     switchthree: false,
     switchfour: false,
     switchfive: false,
+    inputValue: 'You can change me!',
   };
 
   switchOne = () =>
@@ -44,6 +46,10 @@ export default class App extends Component {
     this.setState(({ switchfive }) => ({
       switchfive: !switchfive,
     }));
+
+  _handleTextChange = inputValue => {
+    this.setState({ inputValue });
+  };
 
   render() {
     return (
@@ -121,11 +127,18 @@ export default class App extends Component {
             <Text>
               Do Not Distrub{' '}
             </Text>
+             <Entypo name="chevron-thin-right" size={20} color="green" />
           </TouchableOpacity>
           <Divider />
-          <TextInput />
-        </View>
 
+          <TextInput
+            value={this.state.inputValue}
+            onChangeText={this._handleTextChange}
+            style={{ width: 200, height: 44, padding: 8 }}
+          />
+
+        </View>
+ <Entypo name="chevron-thin-right" size={20} color="green" />
       </View>
     );
   }
