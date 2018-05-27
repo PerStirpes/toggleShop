@@ -42,52 +42,53 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <Switch
-            thumbTintColor={'grey'}
-            onValueChange={this.switchOne}
-            value={this.state.switchone}
-            tintColor={'red'}
-            onTintColor={'purple'}>
-            {'Hi im a switch'}
-          </Switch>
+
+          <View style={styles.paragraph}>
+            <Text>Airplane Mode</Text>
+            <Switch
+              onValueChange={this.switchOne}
+              value={this.state.switchone}
+              tintColor={'red'}
+            />
+          </View>
 
           <Divider />
 
-          <Switch
-            thumbTintColor={'grey'}
-            onValueChange={this.switchTwo}
-            value={this.state.switchtwo}
-            tintColor={'red'}
-            onTintColor={'purple'}
-          />
+          <View style={styles.paragraph}>
+            <Text> Wi-Fi </Text>
+
+            <Switch
+              onValueChange={this.switchTwo}
+              value={this.state.switchtwo}
+              tintColor={'red'}
+            />
+          </View>
           <Divider />
 
+          <View style={styles.paragraph}>
+            <Text> Bluetooth </Text>
+            <Switch
+              thumbTintColor={'#d6d7da'}
+              onValueChange={this.switchThree}
+              value={this.state.switchthree}
+              tintColor={'red'}
+            />
+          </View>
 
-          <Switch
-            thumbTintColor={'grey'}
-            onValueChange={this.switchThree}
-            value={this.state.switchthree}
-            tintColor={'red'}
-            onTintColor={'purple'}
-          />
           <Divider />
-          <Switch
-            thumbTintColor={'grey'}
-            onValueChange={this.switchFour}
-            value={this.state.switchfour}
-            tintColor={'red'}
-            onTintColor={'lime'}
-          />
-          <Divider />
+          <View style={styles.paragraph}>
+            <Text> {'Cellular'}</Text>
+            <Switch
+              thumbTintColor={'#d6d7da'}
+              onValueChange={this.switchFour}
+              value={this.state.switchfour}
+              tintColor={'red'}
+              onTintColor={'lime'}
+            />
+          </View>
         </View>
-        <Text style={styles.test}>
-          Change code in the editor and watch it change on your phone!
-          Save to get a shareable url.
-        </Text>
-          <Text style={styles.paragraph}>
-            Change code in the editor and watch it change on your phone!
-            Save to get a shareable url.
-          </Text>
+        <Divider />
+        <Text />
       </View>
     );
   }
@@ -96,44 +97,30 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
-    borderRadius: 100,
   },
   separator: {
-    // Darker color if hairlineWidth is not thin enough
     backgroundColor: hairlineWidth < 1 ? '#BCBBC1' : 'rgba(0, 0, 0, 0.12)',
     height: hairlineWidth,
     margin: 5,
-    alignItems: 'flex-start',
-    
   },
+
   row: {
     flex: 1,
-    margin: 10,
     padding: 5,
-    alignSelf: 'flex-end',
-    justifyContent: 'flex-start',
+    alignItems: 'stretch',
     borderBottomColor: '#bbb',
-    borderWidth: 10,
+    borderWidth: 1,
+    borderRadius: 20,
     borderColor: '#d6d7da',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
 
   paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     color: '#34495e',
-  },
-  test: {
-    margin: 5,
-    borderWidth: 10,
-    opacity: 0.5,
-    padding: 3,
-    borderRadius: 10,
   },
 });
