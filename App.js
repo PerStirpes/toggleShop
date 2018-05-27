@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Switch } from 'react-native';
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Switch,
+} from 'react-native';
 import { Constants } from 'expo';
 
-// You can import from local files
-
-// or any pure javascript modules available in npm
-
 const Divider = ({ style }) => <View style={[styles.separator, style]} />;
-
-const hairlineWidth = StyleSheet.hairlineWidth;
 
 export default class App extends Component {
   state = {
@@ -16,6 +17,7 @@ export default class App extends Component {
     switchtwo: false,
     switchthree: false,
     switchfour: false,
+    switchfive: false,
   };
 
   switchOne = () =>
@@ -36,6 +38,11 @@ export default class App extends Component {
   switchFour = () =>
     this.setState(({ switchfour }) => ({
       switchfour: !switchfour,
+    }));
+
+  switchFive = () =>
+    this.setState(({ switchfive }) => ({
+      switchfive: !switchfive,
     }));
 
   render() {
@@ -83,9 +90,42 @@ export default class App extends Component {
               tintColor={'#bbb'}
             />
           </View>
+          <Divider />
+          <View style={styles.toggle}>
+            <Text> {'Personal Hotspot'}</Text>
+            <Switch
+              onValueChange={this.switchFive}
+              value={this.state.switchfive}
+              tintColor={'#bbb'}
+            />
+          </View>
+          <Divider />
         </View>
         <Divider />
-        <Text />
+
+        <View style={styles.card}>
+          <TouchableOpacity>
+            <Text>
+              Notifications{' '}
+            </Text>
+          </TouchableOpacity>
+          <Divider />
+          <TouchableOpacity>
+            <Text>
+              Control Center
+            </Text>
+
+          </TouchableOpacity>
+          <Divider />
+          <TouchableOpacity>
+            <Text>
+              Do Not Distrub{' '}
+            </Text>
+          </TouchableOpacity>
+          <Divider />
+          <TextInput />
+        </View>
+
       </View>
     );
   }
@@ -97,25 +137,35 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
   },
-  separator: {
-    backgroundColor: hairlineWidth < 1 ? '#BCBBC1' : 'rgba(0, 0, 0, 0.12)',
-    height: hairlineWidth,
-    margin: 5,
-  },
   row: {
-    flex: 1,
-    padding: 9,
     alignItems: 'stretch',
+    padding: 9,
     borderBottomColor: '#bbb',
     borderWidth: 1,
     borderRadius: 20,
     borderColor: '#d6d7da',
     backgroundColor: 'white',
   },
+  card: {
+    alignItems: 'stretch',
 
+    padding: 9,
+    borderWidth: 1,
+    borderRadius: 20,
+    borderBottomColor: '#bbb',
+    borderColor: '#d6d7da',
+    backgroundColor: 'white',
+  },
   toggle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  separator: {
+    backgroundColor: StyleSheet.hairlineWidth < 1
+      ? '#BCBBC1'
+      : 'rgba(0, 0, 0, 0.12)',
+    height: StyleSheet.hairlineWidth,
+    margin: 5,
   },
 });
