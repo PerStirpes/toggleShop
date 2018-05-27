@@ -43,7 +43,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <View style={styles.row}>
 
-          <View style={styles.paragraph}>
+          <View style={styles.toggle}>
             <Text>Airplane Mode</Text>
             <Switch
               onValueChange={this.switchOne}
@@ -54,7 +54,7 @@ export default class App extends Component {
 
           <Divider />
 
-          <View style={styles.paragraph}>
+          <View style={styles.toggle}>
             <Text> Wi-Fi </Text>
 
             <Switch
@@ -65,10 +65,9 @@ export default class App extends Component {
           </View>
           <Divider />
 
-          <View style={styles.paragraph}>
+          <View style={styles.toggle}>
             <Text> Bluetooth </Text>
             <Switch
-              thumbTintColor={'#d6d7da'}
               onValueChange={this.switchThree}
               value={this.state.switchthree}
               tintColor={'red'}
@@ -76,14 +75,12 @@ export default class App extends Component {
           </View>
 
           <Divider />
-          <View style={styles.paragraph}>
+          <View style={styles.toggle}>
             <Text> {'Cellular'}</Text>
             <Switch
-              thumbTintColor={'#d6d7da'}
               onValueChange={this.switchFour}
               value={this.state.switchfour}
-              tintColor={'red'}
-              onTintColor={'lime'}
+              tintColor={'#bbb'}
             />
           </View>
         </View>
@@ -105,10 +102,9 @@ const styles = StyleSheet.create({
     height: hairlineWidth,
     margin: 5,
   },
-
   row: {
     flex: 1,
-    padding: 5,
+    padding: 9,
     alignItems: 'stretch',
     borderBottomColor: '#bbb',
     borderWidth: 1,
@@ -117,10 +113,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 
-  paragraph: {
+  toggle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    color: '#34495e',
   },
 });
